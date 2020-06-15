@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="Style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <title>Hello, world!</title>
+  </head>
+  <body style="background-color: #162447;">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- First Column -->
+
+        <div class="d-none d-lg-block col-lg-4">
+          <div class="d-flex flex-column">
+            <img
+              src="./assets/Book.png"
+              class="Book img-fluid align-self-center"
+              id="Book1"
+              alt=""
+            />
+            <img
+              src="./assets/Human with Bulb.png"
+              class="Human-bulb img-fluid"
+              alt=""
+            />
+            <img
+              src="./assets/Book.png"
+              class="Book img-fluid align-self-end"
+              id="Book3"
+              alt=""
+            />
+          </div>
+        </div>
+        <!-- Second Column -->
+
+        <div class="col-sm-12 col-lg-4">
+          <div class="d-flex justify-content-center mt-2">
+            <img
+              src="./assets/Open Book middle.png"
+              class="Book img-fluid"
+              id="Mid-Book"
+              alt=""
+            />
+          </div>
+          <!-- Button container -->
+          <div id="Buttons" class="container-fluid">
+            <div class="row">
+              <div class="col-6">
+                <div class="d-flex flex-column">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
+                    Issuse
+                  </button>
+                  <button type="button" class="btn btn-danger mt-3">
+                    Warning
+                  </button>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex flex-column">
+                  <button type="button" class="btn btn-danger">Collect</button>
+                  <button type="button" class="btn btn-danger mt-3">
+                    Check
+                  </button>
+
+                  <!-- last Book -->
+
+                  <img
+                    src="./assets/Book.png"
+                    id="Book4"
+                    class="img-fluid Book mt-5 ml-2"
+                    alt=""
+                  />
+                  <!--  -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Button Container End -->
+        </div>
+        <!-- Third Column -->
+        <div class="d-none d-lg-block col-lg-4">
+          <div class="d-flex flex-column">
+            <img
+              src="./assets/Book.png"
+              class="Book align-self-end img-fluid"
+              id="Book2"
+              alt=""
+            />
+            <img
+              src="./assets/Reading book.png"
+              class="Human-book align-self-center img-fluid mt-5"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BootStrap Javascript Links -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

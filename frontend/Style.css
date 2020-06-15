@@ -1,0 +1,38 @@
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+.Book {
+  height: auto;
+  width: 9.375rem;
+}
+
+.Human-bulb {
+  height: 15.625rem;
+  width: 15.625rem;
+}
+.Human-book {
+  width: 350px;
+}
+
+#Buttons {
+  padding-top: 25%;
+}
+
+#Book1 {
+  padding-top: 50px;
+  transform: rotate(-69deg);
+}
+
+#Book2 {
+  margin-left: 250px;
+  transform: rotate(19deg);
+  padding-top: 20px;
+}
+#Book3 {
+  transform: rotate(-17deg);
+}
+
+#Book4 {
+  transform: rotate(-20deg);
+}
