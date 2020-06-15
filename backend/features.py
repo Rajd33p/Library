@@ -1,1 +1,4 @@
 import random
+
+
+print("lol")
