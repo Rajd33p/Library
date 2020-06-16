@@ -39,7 +39,21 @@ def fine(day):
 #############################################CORE#######################################
 
 def book_C():
-    pass
+    Book_ID = int(input("Enter Book ID : "))
+    sql = "select status from issued where ID=%s"
+    val = (Book_ID,)
+    mycursor.execute(sql, val)
+    status = mycursor.fetchall()
+
+    if len(status) == 0:
+        print("ID not Found")
+
+    else:
+        sql = 'update issued set status="true" where ID=%s'
+        val = (Book_ID,)
+        mycursor.execute(sql, val)
+        mydb.commit()
+        print(mycursor.rowcount, "Record Updated.")
 
 
 def issue():
@@ -74,3 +88,6 @@ def collect_fine():
         print("Late Submission \n Please Collect fine of ", fine(diff.days))
 
 ########################################################################################
+
+
+book_C()
