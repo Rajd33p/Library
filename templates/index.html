@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='Style.css')}}" />
 
     <!-- Bootstrap CSS -->
     <link
@@ -25,18 +25,18 @@
         <div class="d-none d-lg-block col-lg-4">
           <div class="d-flex flex-column">
             <img
-              src="./assets/Book.png"
+              src="{{url_for('static', filename='assets/Book.png')}}"
               class="Book img-fluid align-self-center"
               id="Book1"
               alt=""
             />
             <img
-              src="./assets/Human with Bulb.png"
+              src="{{url_for('static', filename='assets/Human with Bulb.png')}}"
               class="Human-bulb img-fluid"
               alt=""
             />
             <img
-              src="./assets/Book.png"
+              src="{{url_for('static', filename='assets/Book.png')}}"
               class="Book img-fluid align-self-end"
               id="Book3"
               alt=""
@@ -48,7 +48,7 @@
         <div class="col-sm-12 col-lg-4">
           <div class="d-flex justify-content-center mt-2">
             <img
-              src="./assets/Open Book middle.png"
+              src="{{url_for('static', filename='assets/Open Book middle.png')}}"
               class="Book img-fluid"
               id="Mid-Book"
               alt=""
@@ -82,7 +82,7 @@
                   <!-- last Book -->
 
                   <img
-                    src="./assets/Book.png"
+                    src="{{url_for('static', filename='assets/Book.png')}}"
                     id="Book4"
                     class="img-fluid Book mt-5 ml-2"
                     alt=""
@@ -98,13 +98,13 @@
         <div class="d-none d-lg-block col-lg-4">
           <div class="d-flex flex-column">
             <img
-              src="./assets/Book.png"
+              src="{{url_for('static', filename='assets/Book.png')}}"
               class="Book align-self-end img-fluid"
               id="Book2"
               alt=""
             />
             <img
-              src="./assets/Reading book.png"
+              src="{{url_for('static', filename='assets/Reading book.png')}}"
               class="Human-book align-self-center img-fluid mt-5"
               alt=""
             />
@@ -136,7 +136,9 @@
             </button>
           </div>
           <div class="modal-body">
-            ...
+            {% for x in range(10) %}
+            <p>{{x}}</p>
+            {% endfor %}
           </div>
           <div class="modal-footer">
             <button

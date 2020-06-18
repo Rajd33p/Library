@@ -13,7 +13,7 @@ body {
 }
 .Human-book {
   width: 350px;
-  padding-top: 26px;
+  padding-top: 28px;
 }
 
 #Buttons {
@@ -29,7 +29,6 @@ body {
   margin-left: 250px;
   transform: rotate(19deg);
   padding-top: 27px;
- 
 }
 #Book3 {
   transform: rotate(-17deg);
