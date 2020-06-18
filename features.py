@@ -3,6 +3,7 @@ import mysql.connector
 from datetime import datetime
 import random
 import string
+import time
 #######################################################################################
 
 #######################################MYSQL###########################################
@@ -38,22 +39,12 @@ def fine(day):
 
 #############################################CORE#######################################
 
-def book_C():
-    Book_ID = int(input("Enter Book ID : "))
-    sql = "select status from issued where ID=%s"
-    val = (Book_ID,)
-    mycursor.execute(sql, val)
-    status = mycursor.fetchall()
-
-    if len(status) == 0:
-        print("ID not Found")
-
-    else:
-        sql = 'update issued set status="true" where ID=%s'
-        val = (Book_ID,)
-        mycursor.execute(sql, val)
-        mydb.commit()
-        print(mycursor.rowcount, "Record Updated.")
+def B_issued():
+    sql = 'select name , ID , Book_ID ,Add_no from issued where status="false"'
+    mycursor.execute(sql)
+    data = mycursor.fetchall()
+    mydb.commit()
+    return data
 
 
 def issue():
@@ -68,7 +59,7 @@ def issue():
     print(mycursor.rowcount, "record inserted.", "ID - ", ID)
 
 
-def collect_fine():
+def collect():
     I_ID = int(input("Enter Issue ID"))
 
     sql = "SELECT Iss_D FROM Issued WHERE ID = %s"
@@ -87,5 +78,5 @@ def collect_fine():
     else:
         print("Late Submission \n Please Collect fine of ", fine(diff.days))
 
-########################################################################################
 
+########################################################################################

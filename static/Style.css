@@ -16,6 +16,10 @@ body {
   padding-top: 28px;
 }
 
+#table {
+  overflow-y: auto;
+  height: 350px;
+}
 #Buttons {
   padding-top: 25%;
 }
