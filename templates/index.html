@@ -67,8 +67,14 @@
                   >
                     Issuse
                   </button>
-                  <button type="button" class="btn btn-danger mt-3">
-                    Warning
+
+                  <button
+                    type="button"
+                    class="btn btn-danger mt-3"
+                    data-toggle="modal"
+                    data-target="#ToBeCollected"
+                  >
+                    To be Collected
                   </button>
                 </div>
               </div>
@@ -113,10 +119,10 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Books To be collected Modal-->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="ToBeCollected"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -124,19 +130,13 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <input id="myInput" type="text" placeholder="Search.." />
+          <div class="modal-body pt-3 pb-2">
+            <input
+              id="myInput"
+              class="form-control mb-1"
+              type="text"
+              placeholder="Search.."
+            />
 
             <div id="table">
               <table class="table table-striped table-sm">
@@ -145,7 +145,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">Issued ID</th>
                     <th scope="col">Book ID</th>
-                    <th scope="col">Addmission No.</th>
+                    <th scope="col">Addmi. No.</th>
+                    <th scope="col">Days Due</th>
                   </tr>
                 </thead>
                 <tbody id="myTable">
@@ -156,6 +157,7 @@
                     <td>{{x[1]}}</td>
                     <td>{{x[2]}}</td>
                     <td>{{x[3]}}</td>
+                    <td>{{x[4]}}</td>
                   </tr>
 
                   {% endfor %}
@@ -163,15 +165,58 @@
               </table>
             </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer pt-1 pb-1">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary btn-sm"
               data-dismiss="modal"
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Issuse Book  Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body pt-3 pb-2">
+            <form>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Full Name"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Full Name"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Full Name"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer pt-1 pb-1">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>

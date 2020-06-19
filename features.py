@@ -34,17 +34,33 @@ def fine(day):
     else:
         return int((day - 7)*5)
 
+
+def DateDiffernce(IDate):
+    return abs(datetime.strptime(str(IDate), "%Y-%m-%d") -
+               datetime.strptime(str(date), "%Y-%m-%d")).days
+
+
 ########################################################################################
 
 
 #############################################CORE#######################################
 
+
 def B_issued():
-    sql = 'select name , ID , Book_ID ,Add_no from issued where status="false"'
+    response = list()
+    sql = 'select name , ID , Book_ID ,Add_no,Iss_D from issued where status="false"'
     mycursor.execute(sql)
     data = mycursor.fetchall()
     mydb.commit()
-    return data
+
+    for x in data:
+        x = list(x)
+        diff = DateDiffernce(x[4])
+        if (diff >= 7):
+            x[4] = diff
+            response.append(x)
+
+    return response
 
 
 def issue():
@@ -66,9 +82,7 @@ def collect():
     val = (I_ID,)
     mycursor.execute(sql, val)
     Idate = mycursor.fetchall()
-    Idate = Idate[0][0]
-    diff = abs(datetime.strptime(str(Idate), "%Y-%m-%d") -
-               datetime.strptime(str(date), "%Y-%m-%d"))
+    diff = DateDiffernce(Idate[0][0])
     if(diff.days <= 7):
         sql = 'UPDATE ISSUED SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
         val = (date, I_ID)
@@ -80,3 +94,5 @@ def collect():
 
 
 ########################################################################################
+
+B_issued()
