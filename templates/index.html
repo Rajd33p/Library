@@ -1,252 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="{{url_for('static', filename='Style.css')}}" />
-
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
     <title>Hello, world!</title>
-  </head>
-  <body style="background-color: #162447;">
+</head>
+
+<body style="background-color: #162447;">
     <div class="container-fluid">
-      <div class="row">
-        <!-- First Column -->
+        <div class="row">
+            <!-- First Column -->
 
-        <div class="d-none d-lg-block col-lg-4">
-          <div class="d-flex flex-column">
-            <img
-              src="{{url_for('static', filename='assets/Book.png')}}"
-              class="Book img-fluid align-self-center"
-              id="Book1"
-              alt=""
-            />
-            <img
-              src="{{url_for('static', filename='assets/Human with Bulb.png')}}"
-              class="Human-bulb img-fluid"
-              alt=""
-            />
-            <img
-              src="{{url_for('static', filename='assets/Book.png')}}"
-              class="Book img-fluid align-self-end"
-              id="Book3"
-              alt=""
-            />
-          </div>
-        </div>
-        <!-- Second Column -->
-
-        <div class="col-sm-12 col-lg-4">
-          <div class="d-flex justify-content-center mt-2">
-            <img
-              src="{{url_for('static', filename='assets/Open Book middle.png')}}"
-              class="Book img-fluid"
-              id="Mid-Book"
-              alt=""
-            />
-          </div>
-          <!-- Button container -->
-          <div id="Buttons" class="container-fluid">
-            <div class="row">
-              <div class="col-6">
+            <div class="d-none d-lg-block col-lg-4">
                 <div class="d-flex flex-column">
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    data-toggle="modal"
-                    data-target="#exampleModal"
-                  >
-                    Issuse
-                  </button>
-
-                  <button
-                    type="button"
-                    class="btn btn-danger mt-3"
-                    data-toggle="modal"
-                    data-target="#ToBeCollected"
-                  >
-                    To be Collected
-                  </button>
+                    <img src="{{url_for('static', filename='assets/Book.png')}}"
+                        class="Book img-fluid align-self-center" id="Book1" alt="" />
+                    <img src="{{url_for('static', filename='assets/Human with Bulb.png')}}" class="Human-bulb img-fluid"
+                        alt="" />
+                    <img src="{{url_for('static', filename='assets/Book.png')}}" class="Book img-fluid align-self-end"
+                        id="Book3" alt="" />
                 </div>
-              </div>
-              <div class="col-6">
-                <div class="d-flex flex-column">
-                  <button type="button" class="btn btn-danger">Collect</button>
-                  <button type="button" class="btn btn-danger mt-3">
-                    Check
-                  </button>
-
-                  <!-- last Book -->
-
-                  <img
-                    src="{{url_for('static', filename='assets/Book.png')}}"
-                    id="Book4"
-                    class="img-fluid Book mt-5 ml-2"
-                    alt=""
-                  />
-                  <!--  -->
-                </div>
-              </div>
             </div>
-          </div>
-          <!-- Button Container End -->
+            <!-- Second Column -->
+
+            <div class="col-sm-12 col-lg-4">
+                <div class="d-flex justify-content-center mt-2">
+                    <img src="{{url_for('static', filename='assets/Open Book middle.png')}}" class="Book img-fluid"
+                        id="Mid-Book" alt="" />
+                </div>
+                <!-- Button container -->
+                <div id="Buttons" class="container-fluid">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    Issuse
+                                </button>
+
+                                <button type="button" class="btn btn-danger mt-3" data-toggle="modal"
+                                    data-target="#ToBeCollected">
+                                    To be Collected
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <button type="button" class="btn btn-danger">Collect</button>
+                                <button type="button" class="btn btn-danger mt-3">
+                                    Check
+                                </button>
+
+                                <!-- last Book -->
+
+                                <img src="{{url_for('static', filename='assets/Book.png')}}" id="Book4"
+                                    class="img-fluid Book mt-5 ml-2" alt="" />
+                                <!--  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Button Container End -->
+            </div>
+            <!-- Third Column -->
+            <div class="d-none d-lg-block col-lg-4">
+                <div class="d-flex flex-column">
+                    <img src="{{url_for('static', filename='assets/Book.png')}}" class="Book align-self-end img-fluid"
+                        id="Book2" alt="" />
+                    <img src="{{url_for('static', filename='assets/Reading book.png')}}"
+                        class="Human-book align-self-center img-fluid mt-5" alt="" />
+                </div>
+            </div>
         </div>
-        <!-- Third Column -->
-        <div class="d-none d-lg-block col-lg-4">
-          <div class="d-flex flex-column">
-            <img
-              src="{{url_for('static', filename='assets/Book.png')}}"
-              class="Book align-self-end img-fluid"
-              id="Book2"
-              alt=""
-            />
-            <img
-              src="{{url_for('static', filename='assets/Reading book.png')}}"
-              class="Human-book align-self-center img-fluid mt-5"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Books To be collected Modal-->
-    <div
-      class="modal fade"
-      id="ToBeCollected"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body pt-3 pb-2">
-            <input
-              id="myInput"
-              class="form-control mb-1"
-              type="text"
-              placeholder="Search.."
-            />
+    <div class="modal fade" id="ToBeCollected" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body pt-3 pb-2">
+                    <input id="myInput" class="form-control mb-1" type="text" placeholder="Search.." />
 
-            <div id="table">
-              <table class="table table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Issued ID</th>
-                    <th scope="col">Book ID</th>
-                    <th scope="col">Addmi. No.</th>
-                    <th scope="col">Days Due</th>
-                  </tr>
-                </thead>
-                <tbody id="myTable">
-                  {% for x in data %}
+                    <div id="table">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Issued ID</th>
+                                    <th scope="col">Book ID</th>
+                                    <th scope="col">Addmi. No.</th>
+                                    <th scope="col">Days Due</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                {% for x in data %}
 
-                  <tr>
-                    <td>{{x[0]}}</td>
-                    <td>{{x[1]}}</td>
-                    <td>{{x[2]}}</td>
-                    <td>{{x[3]}}</td>
-                    <td>{{x[4]}}</td>
-                  </tr>
+                                <tr>
+                                    <td>{{x[0]}}</td>
+                                    <td>{{x[1]}}</td>
+                                    <td>{{x[2]}}</td>
+                                    <td>{{x[3]}}</td>
+                                    <td>{{x[4]}}</td>
+                                </tr>
 
-                  {% endfor %}
-                </tbody>
-              </table>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer pt-1 pb-1">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
             </div>
-          </div>
-          <div class="modal-footer pt-1 pb-1">
-            <button
-              type="button"
-              class="btn btn-secondary btn-sm"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
         </div>
-      </div>
     </div>
     <!-- Issuse Book  Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body pt-3 pb-2">
-            <form>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Full Name"
-                />
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Full Name"
-                />
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Full Name"
-                />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer pt-1 pb-1">
-            <button
-              type="button"
-              class="btn btn-secondary btn-sm"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body pt-3 pb-2">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Full Name" />
+                            <input type="text" class="form-control" placeholder="Full Name" />
+                            <input type="text" class="form-control" placeholder="Full Name" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer pt-1 pb-1">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <!-- BootStrap Javascript Links -->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script>
-      $(document).ready(function () {
-        $("#myInput").on("keyup", function () {
-          var value = $(this).val().toLowerCase();
-          $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-          });
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
         });
-      });
     </script>
-  </body>
+</body>
+
 </html>
