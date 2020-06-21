@@ -63,10 +63,7 @@ def B_issued():
     return response
 
 
-def issue():
-    name = input("Enter Student Name: ")
-    add_no = int(input("Enter Addmission Number: "))
-    book_ID = int(input("Enter Book ID : "))
+def issue(name, add_no, book_ID):
     ID = ran()
     sql = "INSERT INTO ISSUED(Name,ID,Add_no,Book_ID,Iss_D,Status) VALUES (%s,%s,%s,%s,%s,%s)"
     val = (name, ID, add_no, book_ID, date, "false")
@@ -75,15 +72,13 @@ def issue():
     print(mycursor.rowcount, "record inserted.", "ID - ", ID)
 
 
-def collect():
-    I_ID = int(input("Enter Issue ID"))
-
+def collect(I_ID):
     sql = "SELECT Iss_D FROM Issued WHERE ID = %s"
     val = (I_ID,)
     mycursor.execute(sql, val)
     Idate = mycursor.fetchall()
     diff = DateDiffernce(Idate[0][0])
-    if(diff.days <= 7):
+    if(diff <= 7):
         sql = 'UPDATE ISSUED SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
         val = (date, I_ID)
         mycursor.execute(sql, val)
@@ -94,5 +89,3 @@ def collect():
 
 
 ########################################################################################
-
-B_issued()
