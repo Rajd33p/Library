@@ -69,7 +69,7 @@ def issue(name, add_no, book_ID):
     val = (name, ID, add_no, book_ID, date, "false")
     mycursor.execute(sql, val)
     mydb.commit()
-    print(mycursor.rowcount, "record inserted.", "ID - ", ID)
+    return ID
 
 
 def collect(I_ID):
@@ -77,15 +77,19 @@ def collect(I_ID):
     val = (I_ID,)
     mycursor.execute(sql, val)
     Idate = mycursor.fetchall()
-    diff = DateDiffernce(Idate[0][0])
-    if(diff <= 7):
-        sql = 'UPDATE ISSUED SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
-        val = (date, I_ID)
-        mycursor.execute(sql, val)
-        mydb.commit()
-        print("Records Updated Take the book Back")
+    if len(Idate) != 0:
+        diff = DateDiffernce(Idate[0][0])
+        if(diff <= 7):
+            sql = 'UPDATE ISSUED SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
+            val = (date, I_ID)
+            mycursor.execute(sql, val)
+            mydb.commit()
+            print("Records Updated Take the book Back")
+            return "Good"
+        else:
+            return fine(diff)
     else:
-        print("Late Submission \n Please Collect fine of ", fine(diff.days))
+        return "ID_NOT_FOUND"
 
 
 ########################################################################################

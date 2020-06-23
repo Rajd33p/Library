@@ -39,9 +39,21 @@
                 </div>
                 <!-- Button container -->
                 <div id="Buttons" class="container-fluid">
-                    <div class="alert alert-success" role="alert">
 
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert {{category}} alert-dismissible fade show" role="alert">
+                        {{message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+
                     <div class="row pt-0">
                         <div class="col-6">
                             <div class="d-flex flex-column">
@@ -138,13 +150,13 @@
 
                     <form method="POST" action="#" id="form">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="Fname" placeholder="Full Name" />
+                            <input type="text" class="form-control" name="Fname" placeholder="Full Name" required />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="addno" placeholder="Admission No." />
+                            <input type="text" class="form-control" name="addno" placeholder="Admission No." required />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="BookID" placeholder="Book ID" />
+                            <input type="text" class="form-control" name="BookID" placeholder="Book ID" required />
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-end">
@@ -175,7 +187,6 @@
                                     value="collect">Submit</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -199,6 +210,12 @@
                 $("#myTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                 });
+            });
+        });
+
+        $(function () {
+            $('#flash').delay(500).fadeIn('normal', function () {
+                $(this).delay(2500).fadeOut();
             });
         });
 
