@@ -12,32 +12,20 @@ def home():
         return render_template("index.html", data=B_issued())
     else:
         if request.form['submit'] == "issue":  # issue API
-            ID = issue(request.form['Fname'],
-                       int(request.form['addno']),
-                       int(request.form['BookID']))
-            flash('You Issue ID is ' + str(ID), 'alert-success')
+            issue_res(request.form)
 
         if request.form['submit'] == "collect":
-
             collect_res(request.form['I_ID'])
-
-            # collect_resp = collect(int(request.form['I_ID']))
-
-            # if collect_resp.isdigit():
-            #     flash('Please Collect fine of ' +
-            #           str(collect_res), 'alert-success')
-            # elif collect_resp == "ID_NOT_FOUND":
-
-            #     flash('ID not Found', 'alert-danger')
-
-            # else:
-            #     flash('Please Collect the Book', 'alert-success')
 
         return redirect(url_for("home"))
 
 
-def issue_res(form):
-    pass
+def issue_res(data):
+    try:
+        ID = issue(data['fname'], int(data['addno']), int(data['BookID']))
+        flash('You Issue ID is ' + str(ID), 'alert-success')
+    except:
+        flash('An Exception occurred', 'alert-warning')
 
 
 def collect_res(ID):
