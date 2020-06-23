@@ -71,7 +71,8 @@
                             <div class="d-flex flex-column">
                                 <button type="button" class="btn btn-danger" data-toggle="modal"
                                     data-target="#Collect">Collect</button>
-                                <button type="button" class="btn btn-danger mt-3">
+                                <button type="button" class="btn btn-danger mt-3" data-toggle="modal"
+                                    data-target="#BookT">
                                     Check
                                 </button>
 
@@ -104,7 +105,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body pt-3 pb-2">
-                    <input id="myInput" class="form-control mb-1" type="text" placeholder="Search.." />
+                    <input id="IssueSearch" class="form-control mb-1" type="text" placeholder="Search.." />
 
                     <div id="table">
                         <table class="table table-striped table-sm">
@@ -117,7 +118,7 @@
                                     <th scope="col">Days Due</th>
                                 </tr>
                             </thead>
-                            <tbody id="myTable">
+                            <tbody id="IssueTable">
                                 {% for x in data %}
 
                                 <tr>
@@ -192,6 +193,51 @@
             </div>
         </div>
     </div>
+    <!-- Check Book -->
+    <div class="modal fade" id="BookT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body pt-3 pb-2">
+                    <input id="BookInput" class="form-control mb-1" type="text" placeholder="Search.." />
+
+                    <div id="table">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Author</th>
+                                    <th scope="col">Genre</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Issued</th>
+                                </tr>
+                            </thead>
+                            <tbody id="BookTable">
+                                {% for i in book %}
+
+                                <tr>
+                                    <td>{{i[0]}}</td>
+                                    <td>{{i[1]}}</td>
+                                    <td>{{i[2]}}</td>
+                                    <td>{{i[3]}}</td>
+                                    <td>{{i[4]}}</td>
+                                    <td>{{i[5]}}</td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer pt-1 pb-1">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- BootStrap Javascript Links -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -205,17 +251,20 @@
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
+            $("#IssueSearch").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
+                $("#IssueTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
                 });
             });
         });
 
-        $(function () {
-            $('#flash').delay(500).fadeIn('normal', function () {
-                $(this).delay(2500).fadeOut();
+        $(document).ready(function () {
+            $("#BookInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#BookTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
             });
         });
 

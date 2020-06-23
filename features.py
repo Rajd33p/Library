@@ -45,6 +45,13 @@ def DateDiffernce(IDate):
 
 #############################################CORE#######################################
 
+def BookS():
+    sql = 'select * from books'
+    mycursor.execute(sql)
+    data = mycursor.fetchall()
+    mydb.commit()
+    return data
+
 
 def B_issued():
     response = list()
@@ -68,6 +75,8 @@ def issue(name, add_no, book_ID):
     sql = "INSERT INTO ISSUED(Name,ID,Add_no,Book_ID,Iss_D,Status) VALUES (%s,%s,%s,%s,%s,%s)"
     val = (name, ID, add_no, book_ID, date, "false")
     mycursor.execute(sql, val)
+    update = "UPDATE BOOKS SET Issused = Issused + 1 WHERE ID = %s"
+    mycursor.execute(update, (book_ID,))
     mydb.commit()
     return ID
 

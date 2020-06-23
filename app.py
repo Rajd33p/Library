@@ -3,13 +3,13 @@ from features import *
 
 
 app = Flask(__name__)
-app.secret_key = "sjdnfgisudngjisegiosno"
+app.secret_key = "`=s={y!K?<<6*md8Yh>t/gu"
 
 
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "GET":
-        return render_template("index.html", data=B_issued())
+        return render_template("index.html", data=B_issued(), book=BookS())
     else:
         if request.form['submit'] == "issue":  # issue API
             issue_res(request.form)
@@ -22,7 +22,7 @@ def home():
 
 def issue_res(data):
     try:
-        ID = issue(data['fname'], int(data['addno']), int(data['BookID']))
+        ID = issue(data['Fname'], int(data['addno']), int(data['BookID']))
         flash('You Issue ID is ' + str(ID), 'alert-success')
     except:
         flash('An Exception occurred', 'alert-warning')
