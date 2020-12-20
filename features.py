@@ -8,10 +8,10 @@ import time
 
 #######################################MYSQL###########################################
 mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="root",
-    database="library"
+    host="",
+    user="",
+    passwd="",
+    database=""
 )
 mycursor = mydb.cursor()
 #######################################################################################
@@ -64,7 +64,7 @@ def B_issued():
         x = list(x)
         diff = DateDiffernce(x[4])
         if (diff >= 7):
-            x[4] = diff
+            x[4] = (diff-7)
             response.append(x)
 
     return response
@@ -72,33 +72,41 @@ def B_issued():
 
 def issue(name, add_no, book_ID):
     ID = ran()
-    sql = "INSERT INTO ISSUED(Name,ID,Add_no,Book_ID,Iss_D,Status) VALUES (%s,%s,%s,%s,%s,%s)"
+    sql = "INSERT INTO issued(Name,ID,Add_no,Book_ID,Iss_D,Status) VALUES (%s,%s,%s,%s,%s,%s)"
     val = (name, ID, add_no, book_ID, date, "false")
     mycursor.execute(sql, val)
-    update = "UPDATE BOOKS SET Issused = Issused + 1 WHERE ID = %s"
+    update = "UPDATE books SET Issused = Issused + 1 WHERE ID = %s"
     mycursor.execute(update, (book_ID,))
     mydb.commit()
     return ID
 
 
 def collect(I_ID):
-    sql = "SELECT Iss_D FROM Issued WHERE ID = %s"
+    sql = "SELECT Iss_D , Book_ID FROM issued WHERE ID = %s"
     val = (I_ID,)
     mycursor.execute(sql, val)
     Idate = mycursor.fetchall()
     if len(Idate) != 0:
         diff = DateDiffernce(Idate[0][0])
         if(diff <= 7):
-            sql = 'UPDATE ISSUED SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
+            sql = 'UPDATE issued SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
             val = (date, I_ID)
             mycursor.execute(sql, val)
+            update = "UPDATE books SET Issused = Issused - 1 WHERE ID = %s"
+            mycursor.execute(update, (Idate[0][1],))
             mydb.commit()
             print("Records Updated Take the book Back")
             return "Good"
         else:
+            sql = 'UPDATE issued SET STATUS = "true" , Rcv_D = %s WHERE ID = %s'
+            val = (date, I_ID)
+            mycursor.execute(sql, val)
+            update = "UPDATE books SET Issused = Issused - 1 WHERE ID = %s"
+            mycursor.execute(update, (Idate[0][1],))
+            mydb.commit()
             return fine(diff)
     else:
         return "ID_NOT_FOUND"
 
-
 ########################################################################################
+

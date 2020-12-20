@@ -1,23 +1,55 @@
-from flask import Flask, render_template, url_for, request, redirect, flash
+from datetime import timedelta
+
+from flask import (Flask, flash, redirect, render_template, request, session,
+                   url_for)
+
 from features import *
 
-
 app = Flask(__name__)
-app.secret_key = "`=s={y!K?<<6*md8Yh>t/gu"
+app.config['SECRET_KEY'] = '0TO1BUgdT5HpRt2OjvvS'
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=30)
 
+
+admins = {
+    "username":["admin","Rajdeep"],
+    "password":["admin","Saha"]
+}
 
 @app.route("/", methods=["POST", "GET"])
-def home():
+def login():
     if request.method == "GET":
-        return render_template("index.html", data=B_issued(), book=BookS())
+        if "user" in session:
+            return redirect(url_for("home"))
+        else:
+            return render_template("login.html")
+    if request.method == "POST":
+       session.permanent = True
+       name =  request.form["username"]  
+       passw =  request.form["password"]  
+       
+       if ((name in admins["username"]) and (passw in admins["password"])):
+           session["user"] = name
+           return redirect(url_for("home"))
+       else:
+            return render_template("login.html")
+            
+ 
+@app.route("/home", methods=["POST", "GET"])
+def home():
+    if "user" in session:
+        if request.method == "GET":
+            return render_template("home.html", data=B_issued(), book=BookS())
+        else:
+            if request.form['submit'] == "issue":  # issue API
+                issue_res(request.form)
+
+            if request.form['submit'] == "collect":
+                collect_res(request.form['I_ID'])
+
+            return redirect(url_for("home"))
     else:
-        if request.form['submit'] == "issue":  # issue API
-            issue_res(request.form)
+        return redirect(url_for("login"))
 
-        if request.form['submit'] == "collect":
-            collect_res(request.form['I_ID'])
-
-        return redirect(url_for("home"))
 
 
 def issue_res(data):
@@ -26,11 +58,13 @@ def issue_res(data):
         flash('You Issue ID is ' + str(ID), 'alert-success')
     except:
         flash('An Exception occurred', 'alert-warning')
+   
 
 
 def collect_res(ID):
+    
     try:
-        res = collect(int(ID))
+        res = str(collect(int(ID)))
         if(res.isdigit()):
             flash('Please Collect fine of ' + str(res), 'alert-success')
         elif res == "ID_NOT_FOUND":
@@ -39,7 +73,9 @@ def collect_res(ID):
             flash('Please Collect the Book', 'alert-success')
     except:
         flash('An Exception occurred', 'alert-warning')
+    
+
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='192.168.1.4')
+    app.run(threaded=True, port=5000)
